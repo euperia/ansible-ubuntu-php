@@ -14,7 +14,7 @@
     - php5-intl
     - php5-json
     - php5-mcrypt
-    - php5-mysqlnd
+    - php5-mysql
     - php5-xdebug
     - libapache2-mod-php5
 

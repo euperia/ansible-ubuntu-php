@@ -1,0 +1,32 @@
+- name: ensure PHP PPA is enabled
+  apt_repository: repo='ppa:ondrej/php5'
+
+- name: ensure required PHP extensions are installed
+  apt: name={{ item }} state=present
+  with_items:
+    - php-pear
+    - php5-cli
+    - php5-common
+    - php5-curl
+    - php5-dev
+    - php5-fpm
+    - php5-gd
+    - php5-intl
+    - php5-json
+    - php5-mcrypt
+    - php5-mysqlnd
+    - php5-xdebug
+    - libapache2-mod-php5
+
+ - name: set PHP .ini timezone config (web)
+   lineinfile: dest=/etc/php5/apache2/php.ini
+               regexp='^date.timezone\s?='
+               line="date.timezone = \"America/Montreal\""
+
+- name: set PHP .ini timezone config (cli)
+  lineinfile: dest=/etc/php5/cli/php.ini
+              regexp='^date.timezone\s?='
+              line="date.timezone = \"America/Montreal\""
+
+- name: ensure Apache service is restarted
+  service: name=httpd state=reloaded

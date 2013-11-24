@@ -3,6 +3,6 @@
 
   roles:
     - common
-#    - apache
+    - apache
 #    - mysql
-#    - php
+    - php

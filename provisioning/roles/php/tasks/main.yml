@@ -33,5 +33,8 @@
               regexp='^xdebug.max_netsing_level='
               line='xdebug.max_netsing_level=250'
 
+- name: setup adminer
+  get_url: url=http://www.adminer.org/latest.php dest=/var/www/adminer.php
+
 - name: ensure Apache service is restarted
   service: name=apache2 state=reloaded

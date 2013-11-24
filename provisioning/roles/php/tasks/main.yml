@@ -34,4 +34,4 @@
               line='xdebug.max_netsing_level=250'
 
 - name: ensure Apache service is restarted
-  service: name=httpd state=reloaded
+  service: name=apache2 state=reloaded

@@ -28,5 +28,10 @@
               regexp='^date.timezone\s?='
               line="date.timezone = \"America/Montreal\""
 
+- name: ensure xdebug.max_nesting_level is ok for Symfony2
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
+              regexp='^xdebug.max_netsing_level='
+              line='xdebug.max_netsing_level=250'
+
 - name: ensure Apache service is restarted
   service: name=httpd state=reloaded

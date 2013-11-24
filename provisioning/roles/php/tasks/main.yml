@@ -18,8 +18,8 @@
     - php5-xdebug
     - libapache2-mod-php5
 
- - name: set PHP .ini timezone config (web)
-   lineinfile: dest=/etc/php5/apache2/php.ini
+- name: set PHP .ini timezone config (web)
+  lineinfile: dest=/etc/php5/apache2/php.ini
                regexp='^date.timezone\s?='
                line="date.timezone = \"America/Montreal\""
 

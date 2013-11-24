@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider :virtualbox do |virtualbox|
     ## Don't boot with headless mode
     #vb.gui = true
-    virtualbox.customize ["modifyvm", :id, "--name", "ansible-el6-wetkit"]
+    virtualbox.customize ["modifyvm", :id, "--name", "ansible-ubuntu-php55"]
     virtualbox.customize ["modifyvm", :id, "--memory", "512"]
     # use host OS for dns lookup
     virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -57,9 +57,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell, :path => "provisioning/setup_ansible.sh"
 
-  # config.vm.provision "ansible" do |ansible|
-  #   ansible.playbook = "provisioning/lamp.yml"
-  #   ansible.verbose = "extra"
-  # end
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provisioning/lamp.yml"
+    ansible.verbose = "extra"
+  end
 
 end

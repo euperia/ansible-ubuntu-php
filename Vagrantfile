@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  # config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   # config.vm.box_url = "http://files.vagrantup.com/precise64_vmware.box"
 
 
@@ -41,25 +41,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   #
-  # config.vm.provider :virtualbox do |virtualbox|
-  #   ## Don't boot with headless mode
-  #   #vb.gui = true
-  #   virtualbox.customize ["modifyvm", :id, "--name", "ansible-el6-wetkit"]
-  #   virtualbox.customize ["modifyvm", :id, "--memory", "512"]
-  #   # use host OS for dns lookup
-  #   virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-  # end
-
-  config.vm.provider :vmware_fusion do |vmware|
-    vmware.vmx["memsize"] = "1024"
-    vmware.vms["numvcpus"] = "1"
+  config.vm.provider :virtualbox do |virtualbox|
+    ## Don't boot with headless mode
+    #vb.gui = true
+    virtualbox.customize ["modifyvm", :id, "--name", "ansible-el6-wetkit"]
+    virtualbox.customize ["modifyvm", :id, "--memory", "512"]
+    # use host OS for dns lookup
+    virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
+
+  # config.vm.provider :vmware_fusion do |vmware|
+  #   vmware.vmx["memsize"] = "1024"
+  #   vmware.vms["numvcpus"] = "1"
+  # end
 
   config.vm.provision :shell, :path => "provisioning/setup_ansible.sh"
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/lamp.yml"
-    ansible.verbose = "extra"
-  end
+  # config.vm.provision "ansible" do |ansible|
+  #   ansible.playbook = "provisioning/lamp.yml"
+  #   ansible.verbose = "extra"
+  # end
 
 end

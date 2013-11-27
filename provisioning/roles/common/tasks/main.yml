@@ -5,3 +5,6 @@
     - wget
     - curl
     - git
+
+- name: ensure user `vagrant` is part of `vboxsf` group (to access shared folder)
+  user: name=vagrant groups=vboxsf append=yes

@@ -48,6 +48,9 @@
               regexp='^memory_limit\s?='
               line='memory_limit = 256M'
 
+- name: ensure mod_rewrite is enabled (required by most framework/cms)
+  command: /usr/sbin/a2enmod rewrite
+
 - name: setup adminer
   get_url: url=http://www.adminer.org/latest.php dest=/var/www/adminer.php
 

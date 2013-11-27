@@ -24,6 +24,15 @@ error message
     ansible-playbook -i hosts lamp.yml
 
 
+## Info
+
+Adminer, the database management tool, will be installed at http://localhost/adminer.php. see http://adminer.org
+
+MySQL user is root and password is blank. This is not a production server, just a dev server to be accessed by the host machine.
+
+If not using vagrant, the username/password combo to access the vm are: `vagrant/vagrant`
+
+
 ##  License
 
 This code is open-sourced software licensed under the

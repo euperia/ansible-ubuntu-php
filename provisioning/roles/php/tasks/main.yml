@@ -4,6 +4,7 @@
 - name: ensure required PHP extensions are installed
   apt: name={{ item }} state=present
   with_items:
+    - php-console-table
     - php-pear
     - php5-cli
     - php5-common

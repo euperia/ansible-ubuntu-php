@@ -44,6 +44,21 @@
               regexp='^xdebug.max_nesting_level='
               line='xdebug.max_nesting_level=250'
 
+- name: ensure xdebug.scream is enabled
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
+              regexp='^xdebug.scream='
+              line='xdebug.scream=1'
+
+- name: ensure xdebug.cli_color is enabled
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
+              regexp='^xdebug.cli_color='
+              line='xdebug.cli_color=1'
+
+- name: ensure xdebug.show_local_vars is enabled
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
+              regexp='^xdebug.show_local_vars='
+              line='xdebug.show_local_vars=1'
+
 - name: ensure php.ini memory_limit is ok for Drupal 8
   lineinfile: dest=/etc/php5/apache2/php.ini
               regexp='^memory_limit\s?='

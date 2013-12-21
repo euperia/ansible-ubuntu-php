@@ -27,9 +27,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # your network.
   # config.vm.network :public_network
 
-  # If true, then any SSH connections made will enable agent forwarding.
-  # Default value: false
-  # config.ssh.forward_agent = true
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -51,19 +48,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     virtualbox.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
-  # config.vm.provider :vmware_fusion do |vmware|
-  #   vmware.vmx["memsize"] = "1024"
-  #   vmware.vms["numvcpus"] = "1"
-  # end
-
   # install ansible in the vm, then execute it to prevent the need to have
   #  it installed on the host server
   config.vm.provision :shell, :path => "provisioning/setup_ansible.sh"
   config.vm.provision :shell, :path => "ansible_provisioning.sh"
-
-  # config.vm.provision "ansible" do |ansible|
-  #   ansible.playbook = "provisioning/lamp.yml"
-  #   ansible.verbose = "extra"
-  # end
 
 end

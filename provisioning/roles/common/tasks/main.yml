@@ -3,11 +3,12 @@
   with_items:
     - build-essential
     - curl
+    - exuberant-ctags
     - git
-    - vim
-    - wget
     - ncurses-term
     - python-software-properties
+    - vim
+    - wget
 
 - name: ensure user `vagrant` is part of `vboxsf` group (to access shared folder)
   user: name=vagrant groups=vboxsf append=yes

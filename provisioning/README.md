@@ -2,7 +2,7 @@ Ansible config
 ==============
 
 This is a set of Ansible files to set up a working PHP development environment
-on a Ubuntu 12.04 machine (apache, mysql, php).
+on a Ubuntu 12.04 LTS machine (apache, mysql, php).
 
 Ansible is an IT automation tool. It can configure systems, deploy software, and
 orchestrate more advanced IT tasks such as continuous deployments or zero

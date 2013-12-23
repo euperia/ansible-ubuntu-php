@@ -1,6 +1,7 @@
 - name: ensure some base packages are installed
   apt: name={{ item }} state=present update_cache=yes
   with_items:
+    - ack-grep
     - build-essential
     - curl
     - exuberant-ctags

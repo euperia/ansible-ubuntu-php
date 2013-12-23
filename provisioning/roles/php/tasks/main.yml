@@ -74,5 +74,5 @@
   service: name=apache2 state=reloaded
 
 - name: install composer.phar
-  shell: /usr/bin/curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/local/bin && mv -f /usr/local/bin/composer.phar /usr/local/bin/composer
-  creates: /usr/local/bin/composer
+  shell: creates=/usr/local/bin/composer
+         /usr/bin/curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/local/bin && mv -f /usr/local/bin/composer.phar /usr/local/bin/composer

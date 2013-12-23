@@ -1,0 +1,20 @@
+# Personal config for eleclerc - https://github.com/eleclerc
+- hosts: localhost
+  vars:
+    home: /home/vagrant
+    full_name: Eric Leclerc
+    email: mail@example.com
+  tasks:
+    - name: ensure my vim config is installed
+      git: repo=https://github.com/eleclerc/dotvim.git
+           dest={{ home }}/.vim
+
+    - name: ensure Git knows my username
+      command: git config --global user.name "{{ full_name }}"
+
+    - name: ensure Git knows my email
+      command: git config --global user.email = "{{ email }}"
+
+    - name: ensure Git is colorful
+      command: git config --global colors.ui true
+

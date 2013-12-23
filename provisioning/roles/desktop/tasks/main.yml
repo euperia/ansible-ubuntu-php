@@ -1,0 +1,6 @@
+- name: ensure a proper desktop is installed
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+    - ubuntu-desktop
+    - gnome-shell
+    - gnome-tweak-tool

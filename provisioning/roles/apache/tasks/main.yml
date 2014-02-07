@@ -3,3 +3,8 @@
 
 - name: ensure Apache service is started
   service: name=apache2 state=started
+
+- name: allow .htaccess overrides
+  lineinfile: dest=/etc/apache2/apache2.conf
+              regexp='AllowOverride None'
+              line="AllowOverride All"

@@ -3,6 +3,7 @@
 
   roles:
     - common
+    - vagrant
     - apache
     - mysql
     - php

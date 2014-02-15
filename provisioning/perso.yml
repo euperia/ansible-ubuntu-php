@@ -13,7 +13,7 @@
       command: git config --global user.name "{{ full_name }}"
 
     - name: ensure Git knows my email
-      command: git config --global user.email = "{{ email }}"
+      command: git config --global user.email "{{ email }}"
 
     - name: ensure Git is colorful
       command: git config --global colors.ui true

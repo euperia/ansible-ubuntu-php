@@ -2,12 +2,19 @@
 - hosts: localhost
   vars:
     home: /home/vagrant
-    full_name: Eric Leclerc
+    user: vagrant
+    full_name: Myfull Name
     email: mail@example.com
   tasks:
     - name: ensure my vim config is installed
       git: repo=https://github.com/eleclerc/dotvim.git
            dest={{ home }}/.vim
+
+    - name: ensure newly downloaded vim config have right user permissions
+      file: path={{ home }}/.vim owner={{ user }} group={{ user }} recurse=yes state=directory
+
+    - name: ensure my .vimrc file is used
+      file: src={{ home }}/.vim/vimrc dest={{ home }}/.vimrc owner={{ user }} group={{ user }} state=link
 
     - name: ensure Git knows my username
       command: git config --global user.name "{{ full_name }}"

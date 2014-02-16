@@ -24,6 +24,11 @@ error message
     ansible-playbook -i hosts lamp.yml
 
 
+## PHP Version
+
+The `master` branch is using the default Ubuntu PHP (5.3.x). 
+A branch named `ubuntu1204-php55` is using a PPA to setup the latest version of php
+
 ## Info
 
 Adminer, the database management tool, will be installed at http://localhost/adminer.php. see http://adminer.org

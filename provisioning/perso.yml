@@ -23,5 +23,5 @@
       command: git config --global user.email "{{ email }}"
 
     - name: ensure Git is colorful
-      command: git config --global colors.ui true
+      command: git config --global color.ui true
 

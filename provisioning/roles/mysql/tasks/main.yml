@@ -1,4 +1,4 @@
 - name: ensure MySQL is installed
-  apt: name="{{ item }}" state=present
+  apt: name="{{ item }}" state=latest
   with_items:
     - mysql-server

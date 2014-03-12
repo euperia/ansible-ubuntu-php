@@ -1,5 +1,5 @@
 - name: ensure some base packages are installed
-  apt: name={{ item }} state=present update_cache=yes
+  apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - ack-grep
     - acl

@@ -5,10 +5,10 @@
   apt: update_cache=yes
 
 - name: ensure Apache is installed
-  apt: name=apache2 state=present
+  apt: name=apache2 state=latest
 
 - name: ensure required PHP extensions are installed
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=latest
   with_items:
     - php-console-table
     - php-pear

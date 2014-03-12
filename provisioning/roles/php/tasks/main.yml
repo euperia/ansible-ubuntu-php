@@ -1,6 +1,9 @@
 - name: ensure PHP PPA is enabled
   apt_repository: repo='ppa:ondrej/php5'
 
+- name: update apt update_cache
+  apt: update_cache=yes
+
 - name: ensure Apache is installed
   apt: name=apache2 state=present
 

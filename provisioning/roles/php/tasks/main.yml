@@ -1,3 +1,9 @@
+- name: ensure PHP PPA is enabled
+  apt_repository: repo='ppa:ondrej/php5'
+
+- name: ensure Apache is installed
+  apt: name=apache2 state=present
+
 - name: ensure required PHP extensions are installed
   apt: name={{ item }} state=present
   with_items:
@@ -7,9 +13,9 @@
     - php5-common
     - php5-curl
     - php5-dev
-    - php5-fpm
     - php5-gd
     - php5-intl
+    - php5-json
     - php5-mcrypt
     - php5-mysql
     - php5-sqlite
@@ -37,22 +43,22 @@
               line="error_reporting = E_ALL"
 
 - name: ensure xdebug.max_nesting_level is ok for Symfony2
-  lineinfile: dest=/etc/php5/conf.d/xdebug.ini
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
               regexp='^xdebug.max_nesting_level='
               line='xdebug.max_nesting_level=250'
 
 - name: ensure xdebug.scream is enabled
-  lineinfile: dest=/etc/php5/conf.d/xdebug.ini
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
               regexp='^xdebug.scream='
               line='xdebug.scream=1'
 
 - name: ensure xdebug.cli_color is enabled
-  lineinfile: dest=/etc/php5/conf.d/xdebug.ini
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
               regexp='^xdebug.cli_color='
               line='xdebug.cli_color=1'
 
 - name: ensure xdebug.show_local_vars is enabled
-  lineinfile: dest=/etc/php5/conf.d/xdebug.ini
+  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
               regexp='^xdebug.show_local_vars='
               line='xdebug.show_local_vars=1'
 
@@ -64,8 +70,8 @@
 - name: ensure mod_rewrite is enabled (required by most framework/cms)
   command: /usr/sbin/a2enmod rewrite
 
-- name: setup adminer
-  get_url: url=http://www.adminer.org/latest.php dest=/var/www/adminer.php
+- name: ensure mod_rewrite is enabled (required by most framework/cms)
+  command: /usr/sbin/a2enmod rewrite
 
 - name: ensure Apache service is restarted
   service: name=apache2 state=reloaded

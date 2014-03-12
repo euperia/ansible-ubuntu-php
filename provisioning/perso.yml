@@ -5,6 +5,7 @@
     user: vagrant
     full_name: Myfull Name
     email: mail@example.com
+    extra_packages: []
   tasks:
     - name: ensure my vim config is installed
       git: repo=https://github.com/eleclerc/dotvim.git
@@ -25,3 +26,6 @@
     - name: ensure Git is colorful
       command: git config --global color.ui true
 
+    - name: install extra packages
+      apt: pkg={{ item }} state=latest
+      with_items: extra_packages

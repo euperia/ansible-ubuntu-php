@@ -1,6 +1,3 @@
-- name: ensure PHP PPA is enabled
-  apt_repository: repo='ppa:ondrej/php5'
-
 - name: update apt update_cache
   apt: update_cache=yes
 
@@ -10,7 +7,6 @@
 - name: ensure required PHP extensions are installed
   apt: name={{ item }} state=latest
   with_items:
-    - php-console-table
     - php-pear
     - php5-cli
     - php5-common
@@ -21,19 +17,18 @@
     - php5-json
     - php5-mcrypt
     - php5-mysql
-    - php5-sqlite
-    - php5-xdebug
+    - php5-xsl
     - libapache2-mod-php5
 
 - name: set PHP .ini timezone config (web)
   lineinfile: dest=/etc/php5/apache2/php.ini
                regexp='^date.timezone\s?='
-               line="date.timezone = \"America/Montreal\""
+               line="date.timezone = \"Europe/London\""
 
 - name: set PHP .ini timezone config (cli)
   lineinfile: dest=/etc/php5/cli/php.ini
               regexp='^date.timezone\s?='
-              line="date.timezone = \"America/Montreal\""
+              line="date.timezone = \"Europe/London\""
 
 - name: set php.ini display_error to ON
   lineinfile: dest=/etc/php5/apache2/php.ini
@@ -45,36 +40,16 @@
               regexp='^error_reporting\s?='
               line="error_reporting = E_ALL"
 
-- name: ensure xdebug.max_nesting_level is ok for Symfony2
-  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
-              regexp='^xdebug.max_nesting_level='
-              line='xdebug.max_nesting_level=250'
-
-- name: ensure xdebug.scream is enabled
-  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
-              regexp='^xdebug.scream='
-              line='xdebug.scream=1'
-
-- name: ensure xdebug.cli_color is enabled
-  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
-              regexp='^xdebug.cli_color='
-              line='xdebug.cli_color=1'
-
-- name: ensure xdebug.show_local_vars is enabled
-  lineinfile: dest=/etc/php5/mods-available/xdebug.ini
-              regexp='^xdebug.show_local_vars='
-              line='xdebug.show_local_vars=1'
-
 - name: ensure php.ini memory_limit is ok for Drupal 8
   lineinfile: dest=/etc/php5/apache2/php.ini
               regexp='^memory_limit\s?='
               line='memory_limit = 256M'
 
-- name: ensure mod_rewrite is enabled (required by most framework/cms)
+- name: ensure mod_rewrite is enabled
   command: /usr/sbin/a2enmod rewrite
 
-- name: ensure mod_rewrite is enabled (required by most framework/cms)
-  command: /usr/sbin/a2enmod rewrite
+- name: ensure mod_headers is enabled (required by most framework/cms)
+  command: /usr/sbin/a2enmod headers
 
 - name: ensure Apache service is restarted
   service: name=apache2 state=reloaded

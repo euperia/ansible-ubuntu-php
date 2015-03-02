@@ -1,7 +1,7 @@
-# Virtual Machine for PHP development
+# Virtual Machine for PHP 5.3.x development
 
-Virtual machine suitable for PHP development (Symfony, Laravel, Drupal 8, etc).
-Build with Ubuntu 12.04 including apache, mysql, and php packages.
+Virtual machine suitable for PHP development.
+Build with Ubuntu 12.04 (precise64) including Apache, MySQL, PHP 5.3.x, and PHP packages.
 
 If you don't want / can't use vagrant, create your own Virtual Box image with
 Ubuntu 12.04, then get the `provisioning` folder on it and follow instructions

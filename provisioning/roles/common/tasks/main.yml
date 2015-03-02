@@ -7,6 +7,7 @@
     - curl
     - exuberant-ctags
     - git
+    - memcached
     - ncurses-term
     - python-software-properties
     - vim
